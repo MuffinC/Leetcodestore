@@ -1,11 +1,11 @@
-strs = ["flower","flow","flight"]
+def longestCommonPrefix(m):
+    if not m: return ''
+    # since list of string will be sorted and retrieved min max by alphebetic order
+    s1 = min(m)
+    s2 = max(m)
 
-result = ""
-minimum = min(len(c) for c in strs)
-for y in range(minimum):
-    ch = strs[0][y]
-    for x in strs:
-        if ch != x[y]:
-            return result
-    result += ch
-return result
+    for i, c in enumerate(s1):
+        if c != s2[i]:
+            return s1[:i]  # stop until hit the split index
+    return s1
+print(longestCommonPrefix(["dog","racecar","car"]))
