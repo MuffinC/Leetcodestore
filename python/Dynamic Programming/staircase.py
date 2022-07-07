@@ -1,11 +1,17 @@
-def climbStairs(n):
-    alpha=1
-    beta=1
-    for x in range(1,n,1):
-        hold=beta
-        beta = alpha+beta
-        alpha = hold
-    return beta
+def climbStairs(n,memo={}):
+    if n in memo: return memo[n]
+    if n==0: return 1
+    if n<0: return None
+    steps=[1,2]
+    ans=0
+    for x in steps:
+        res=climbStairs(n-x,memo)
+
+        if (res):
+            ans+=res
+    memo[n]=ans
+
+    return ans
 
 
 
@@ -13,4 +19,4 @@ def climbStairs(n):
 
 
 
-print(climbStairs(4))
+print(climbStairs(35))
