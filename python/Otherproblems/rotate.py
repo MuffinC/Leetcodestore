@@ -1,8 +1,12 @@
 def rotate(nums,k):
-    step=nums[len(nums)-k:]
-    sr=nums[:len(nums)-k]
+    if len(nums) == 1: return nums
+    z = k
+    while z >= a:
+        z = z - len(a)
+    step=nums[len(nums)-k-1:]
+    sr=nums[:len(nums)-k-1]
 
-    return sr+step
+    return step+sr
 
 
 
