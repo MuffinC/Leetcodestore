@@ -1,5 +1,6 @@
 def plusOne(digits):
-    totaltens=len(digits)-1
+    """
+        totaltens=len(digits)-1
     total =0
     stack = []
     for x in digits:
@@ -12,8 +13,15 @@ def plusOne(digits):
     return stack
 
 
+    """
+    digits = [str(x) for x in digits]
+    res = int("".join(digits)) +1
+    return [x for x in list(str(res))]
 
 
 
 
-print(plusOne([9]))
+
+
+
+print(plusOne([1,2,3]))
