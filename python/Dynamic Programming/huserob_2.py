@@ -1,13 +1,14 @@
 def rob(nums):
-    if len(nums)<=1:
-        return nums[0]
-    elif  len(nums)== 2:
-        return max(nums[0], nums[1])
-    else:
-        robbed = [nums[0], max(nums[1], nums[0])]
+    return max(nums[0], helper(nums[1:]),helper(nums[:-1]))
 
-        for i in range(2, len(nums)):
-            robbed.append(max((robbed[i - 2] + nums[i]), robbed[i - 1]))
 
-        return (robbed[-1])
-print(rob([1,2,3]))
+def helper(nums):
+    rob1, rob2 = 0, 0
+
+    for n in nums:
+        newRob = max(rob1 + n, rob2)
+        rob1 = rob2
+        rob2 = newRob
+    return rob2
+
+print(rob([200,3,140,20,10]))

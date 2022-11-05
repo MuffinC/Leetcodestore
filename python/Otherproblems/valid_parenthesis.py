@@ -1,5 +1,5 @@
 
-d = "(([]){})"
+d = "(("
 
 
 def val(s):
@@ -19,6 +19,35 @@ def val(s):
                 else:  # if stack is empty or does not match i, then return false and end the loop
                     return False
         return True if not stack else False  # just double checking to make sure everything matched and stack is empty
-print(val(d))
+
+def isValid(s):
+    """
+    :type s: str
+    :rtype: bool
+    """
+    if len(s) < 2: return False
+    stack = []
+    table = {'(': ')', '[': ']', '{': '}'}
+    for x in s:
+        if x in table:
+            stack.append(table[x])
+        else:
+            try:
+                if x == stack[-1]:
+                    stack.pop(-1)
+                else:
+                    return False
+            except:
+                return False
+    if stack: return False
+
+    return True
+
+    return True
+
+
+
+
+print(isValid(d))
 
 

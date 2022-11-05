@@ -27,7 +27,7 @@ def is_square_valid(self, board):
     return True
 
 
-def is_unit_valid(self, unit):
+def is_unit_valid(unit):
     unit = [i for i in unit if i != '.']
 
 
