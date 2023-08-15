@@ -1,21 +1,29 @@
 def isNStraightHand(hand, groupSize):
     if len(hand) % groupSize != 0:return False
-    else:
+    table = {1:[]}  # count: array
+    hand = list(sorted(hand))
+    keyt = 1
+    prog = 0
+    while prog < len(hand):
 
-        table={}
-        for x in hand:
-            if x not in table: table[x]=1
-            else: table[x]+=1
-        #hash map val||count
-        while sum(table.values())!=0:
+        if hand[prog] not in table[keyt]:
 
-            for z in range(0,groupSize,1):
+            table[keyt].append(hand[prog])
+            if len(table[keyt])>1 and table[keyt][-1]-1 != table[keyt][-2]:
+                return False
+
+            hand.pop(prog)
+        else: prog+=1
+        if len(table[keyt]) == groupSize:
+            prog = 0
+            keyt += 1
+            table[keyt] = []
+    table.popitem()
+    if len(hand) != 0: return False
+
+
+    return True
 
 
 
-
-        return True
-
-
-
-print(isNStraightHand([1,2,3,6,2,3,4,7,8],3))
+print(isNStraightHand([8,10,12],3))

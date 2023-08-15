@@ -1,13 +1,22 @@
 def canJump(nums):
-    goalpost = len(nums) - 1
-    for x in range(len(nums) - 1, -1, -1):
-        # checking if goalpost can be shifted
-        if x + nums[x] >= goalpost:
-            goalpost = x
+    ptr = 0
+    last = len(nums) - 1
+    print(last)
+    for idx, num in enumerate(nums):
+        print("START", ptr, idx, num)
+        if (ptr >= last):
+            print("IF", ptr, idx, num)
+            return True
+        elif (ptr == idx):
+            print("ELIF", ptr, idx, num)
+            ptr = idx + num
+        else:
+            continue
+    return False
 
-    return True if goalpost == 0 else False
 
 
 
 
-print(canJump([2,3,2,0,4]))
+
+print(canJump([2,5,0,0]))
